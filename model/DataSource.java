@@ -1,3 +1,4 @@
+//Elena Voinu 2020
 package model;
 
 import java.sql.Connection;
@@ -8,7 +9,8 @@ public class DataSource {
     public static final String DB_NAME = "music.db";
 
     //connection string
-    public static final String CONNECTION_STRING = "jdbc:sqlite:/Users/elenavoinu/OneDrive - City Colleges of Chicago/udemy/MusicSQLite/" + DB_NAME;
+    //connect to the database
+    public static final String CONNECTION_STRING = "jdbc:sqlite:/path_to_database/" + DB_NAME;
 
     //table albums
     public static final String TABLE_ALBUMS = "albums";
