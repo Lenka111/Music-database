@@ -54,12 +54,46 @@ public class DataSource {
             System.out.println("Couldn't close connection " + e.getMessage());
         }
     }
-
-
+    
     //return a list of artists
+    //query artists method
+    public List<Artist> queryArtistList(){
+        //start with statement
+        //A Statement is an interface that represents a SQL statement.
+        // You execute Statement objects, and they generate ResultSet objects,
+        // which is a table of data representing a database result set.
+        //Statement statement = null;
+        //ResultSet resultSet=null;
 
+        try(Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS) ){
 
+            //create statement
+            // statement=connection.createStatement();
+            // execute sqlite statement
+            // resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS);
 
+            List<Artist> artists = new ArrayList<>();
+            while(resultSet.next()){
 
+                //for each record create a new artist object
+                Artist artist = new Artist();
 
+                //get the values of the record and save them to the artist instance
+                //artist.setId(resultSet.getInt(COLUMN_ARTIST_ID));
+                artist.setId(resultSet.getInt(INDEX_ARTIST_ID));
+               
+               // artist.setName(resultSet.getString(COLUMN_ARTIST_NAME));
+                artist.setName(resultSet.getString(INDEX_ARTIST_NAME));
+                //add the instance to the list
+                artists.add(artist);
+
+            }
+            return  artists;
+        }catch (SQLException e){
+            System.out.println("query failed " + e.getMessage());
+            return null;
+        }
+
+    } //end method queryList()
 }
