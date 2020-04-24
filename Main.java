@@ -12,6 +12,20 @@ public class Main {
             System.out.println("Can't open datasource");
             return;
         }
+        
+        //create a list of artists
+        List<Artist> artists = dataSource.queryArtistList();
+        
+        if(artists == null){
+            System.out.println("No artists");
+            return;
+        }
+        // loop through the artists list
+        for(Artist artist : artists){
+            System.out.println("ID = " + artist.getId() + " Name = " + artist.getName());
+
+        }
+        
         dataSource.close();
 
     }
