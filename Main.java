@@ -20,7 +20,7 @@ public class Main {
             System.out.println("No artists");
             return;
         }
-        // loop through the artists list
+        // loop through the artists list and print it 
         for(Artist artist : artists){
             System.out.println("ID = " + artist.getId() + " Name = " + artist.getName());
 
