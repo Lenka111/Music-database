@@ -58,20 +58,11 @@ public class DataSource {
     //return a list of artists
     //query artists method
     public List<Artist> queryArtistList(){
-        //start with statement
-        //A Statement is an interface that represents a SQL statement.
-        // You execute Statement objects, and they generate ResultSet objects,
-        // which is a table of data representing a database result set.
-        //Statement statement = null;
-        //ResultSet resultSet=null;
-
+        
+        //create statement
         try(Statement statement = connection.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS) ){
-
-            //create statement
-            // statement=connection.createStatement();
             // execute sqlite statement
-            // resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS) ){
 
             List<Artist> artists = new ArrayList<>();
             while(resultSet.next()){
