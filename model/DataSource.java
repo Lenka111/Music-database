@@ -64,7 +64,11 @@ public class DataSource {
             // execute sqlite statement
             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS) ){
 
+            //create a list of artists
             List<Artist> artists = new ArrayList<>();
+            
+            //repeatedly calls the method ResultSet.next to move the cursor forward by one row.
+            //Every time it calls next, the method outputs the data in the row where the cursor is currently positioned
             while(resultSet.next()){
 
                 //for each record create a new artist object
@@ -74,8 +78,9 @@ public class DataSource {
                 //artist.setId(resultSet.getInt(COLUMN_ARTIST_ID));
                 artist.setId(resultSet.getInt(INDEX_ARTIST_ID));
                
-               // artist.setName(resultSet.getString(COLUMN_ARTIST_NAME));
+                // artist.setName(resultSet.getString(COLUMN_ARTIST_NAME));
                 artist.setName(resultSet.getString(INDEX_ARTIST_NAME));
+                
                 //add the instance to the list
                 artists.add(artist);
 
