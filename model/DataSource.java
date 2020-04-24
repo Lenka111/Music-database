@@ -61,7 +61,12 @@ public class DataSource {
         
         //create statement
         try(Statement statement = connection.createStatement();
+            
             // execute sqlite statement
+            //You access the data in a ResultSet object through a cursor. 
+            //Note that this cursor is not a database cursor. This cursor is a pointer that points to one row 
+            //of data in the ResultSet object. Initially, the cursor is positioned before the first row. 
+            //You call various methods defined in the ResultSet object to move the cursor.
             ResultSet resultSet = statement.executeQuery("SELECT * FROM " + TABLE_ARTISTS) ){
 
             //create a list of artists
